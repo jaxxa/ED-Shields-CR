@@ -5,10 +5,11 @@
 	<url>https://ludeon.com/forums/index.php?topic=15606.0</url>
     <targetVersion>0.14.1220</targetVersion>
 	<description>
-	Requires: ED-Shields, Community Core Library, CombatRealism
+	Requires: ED-ShieldsBasic, Community Core Library, CombatRealism
 	
 -CombatRealism-1.6.7.3
--Community Core Libraryv0.14.3
+-Community Core Library v0.14.3
+-ED-ShieldsBasic Version: 01.00.01
 	
 Modifies the Shields from ED-Shields to intercept the projectiles fired by weapons from Combat Realism.
 	</description>
