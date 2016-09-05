@@ -1,5 +1,6 @@
 ﻿using Combat_Realism;
-using Enhanced_Development.ShieldUtils;
+using EnhancedDevelopment.Shields.Basic;
+using EnhancedDevelopment.Shields.Basic.ShieldUtils;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using Verse.Sound;
 
 namespace ED_Shields_CR
 {
-    class Building_Shield_CR : Enhanced_Development.Shields.Building_Shield
+    class Building_Shield_CR : EnhancedDevelopment.Shields.Basic.Building_Shield
     {
         public override void ProtectSquare(IntVec3 square)
         {
@@ -51,7 +52,7 @@ namespace ED_Shields_CR
                                     if (launcher.Faction.def != null)
                                     {
                                         //Log.Message("launcher != null");
-                                        if (launcher.Faction.def == FactionDefOf.Colony)
+                                        if (launcher.Faction.IsPlayer)
                                         {
                                             wantToIntercept = false;
                                         }
@@ -140,7 +141,7 @@ namespace ED_Shields_CR
                                     if (launcher.Faction.def != null)
                                     {
                                         //Log.Message("launcher != null");
-                                        if (launcher.Faction.def == FactionDefOf.Colony)
+                                        if (launcher.Faction.IsPlayer)
                                         {
                                             wantToIntercept = false;
                                         }
