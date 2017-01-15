@@ -9,3 +9,8 @@ Modifies the Shields from ED-Shields to intercept the projectiles fired by weapo
 01.00.00
 *Initial Release
 
+02.00.00
+Updating to:
+  * Rimworld A16
+  * CombatRealism-1.6.9.4
+  * ED-ShieldsBasic 03.00.00

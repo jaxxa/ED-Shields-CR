@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>ED-Shields-CR</name>
+	<author>Jaxxa</author>
+	<url>https://ludeon.com/forums/index.php?topic=18995.0</url>
+    <targetVersion>0.16.1220</targetVersion>
+	<description>Version: 02.00.00
+Discussion, Non Steam Downloads and GitHub Repositories of this mod is available at: https://ludeon.com/forums/index.php?topic=18995
+Please Use that Thread for Discussion / Feedback that would like me to reply to. 
+Ideally Bugs should be logged on GitHub although in the discussion thread is also fine.
+	
+Requires: ED-ShieldsBasic, CombatRealism	
+  * CombatRealism-1.6.9.4
+  * ED-ShieldsBasic 03.00.00
+	
+Modifies the Shields from ED-ShieldsBasic to intercept the projectiles fired by weapons from Combat Realism.
+	</description>
+</ModMetaData>
