@@ -15,22 +15,29 @@ namespace ED_Shields_CR
 {
     class Building_Shield_CR : EnhancedDevelopment.Shields.Basic.Building_Shield
     {
-        public override void ProtectSquare(IntVec3 square)
+
+        /// <summary>
+        /// Finds all projectiles at the position and destroys them
+        /// </summary>
+        /// <param name="square">The current square to protect</param>
+        /// <param name="flag_direct">Block direct Fire</param>
+        /// <param name="flag_indirect">Block indirect Fire</param>
+        override public void ProtectSquare(IntVec3 square)
         {
+            this.ProtectSquareCR(square);
 
             //Ignore squares outside the map
-            if (!square.InBounds())
+            if (!square.InBounds(this.Map))
             {
                 return;
             }
-            List<Thing> things = Find.ThingGrid.ThingsListAt(square);
+            List<Thing> things = this.Map.thingGrid.ThingsListAt(square);
             List<Thing> thingsToDestroy = new List<Thing>();
             Boolean _IFFCheck = this.m_StructuralIntegrityMode;
 
             for (int i = 0, l = things.Count(); i < l; i++)
             {
 
-                //---------- Checking for Normal Projectiles ----------
                 if (things[i] != null && things[i] is Projectile)
                 {
                     //Assign to variable
@@ -49,17 +56,14 @@ namespace ED_Shields_CR
                             {
                                 if (launcher.Faction != null)
                                 {
-                                    if (launcher.Faction.def != null)
+                                    //Log.Message("launcher != null");
+                                    if (launcher.Faction.IsPlayer)
                                     {
-                                        //Log.Message("launcher != null");
-                                        if (launcher.Faction.IsPlayer)
-                                        {
-                                            wantToIntercept = false;
-                                        }
-                                        else
-                                        {
+                                        wantToIntercept = false;
+                                    }
+                                    else
+                                    {
 
-                                        }
                                     }
                                 }
                             }
@@ -99,9 +103,9 @@ namespace ED_Shields_CR
                             {
 
                                 //On hit effects
-                                MoteThrower.ThrowLightningGlow(pr.ExactPosition, 0.5f);
+                                MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
                                 //On hit sound
-                                HitSoundDef.PlayOneShot(pr.Position);
+                                HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
 
                                 //Damage the shield
                                 ProcessDamage(pr.def.projectile.damageAmountBase);
@@ -116,11 +120,31 @@ namespace ED_Shields_CR
 
                     }
                 }
+            }
+            foreach (Thing currentThing in thingsToDestroy)
+            {
+                currentThing.Destroy();
+            }
 
-                //---------- Checking for Normal Projectiles ----------
+        }
 
 
-                if (things[i] != null && things[i] is ProjectileCR)
+        public void ProtectSquareCR(IntVec3 square)
+        {
+
+            //Ignore squares outside the map
+            if (!square.InBounds(this.Map))
+            {
+                return;
+            }
+            List<Thing> things = this.Map.thingGrid.ThingsListAt(square);
+            List<Thing> thingsToDestroy = new List<Thing>();
+            Boolean _IFFCheck = this.m_StructuralIntegrityMode;
+
+            for (int i = 0, l = things.Count(); i < l; i++)
+            {
+
+                if (things[i] != null && things[i] is Combat_Realism.ProjectileCR)
                 {
                     //Assign to variable
                     ProjectileCR pr = (ProjectileCR)things[i];
@@ -138,17 +162,14 @@ namespace ED_Shields_CR
                             {
                                 if (launcher.Faction != null)
                                 {
-                                    if (launcher.Faction.def != null)
+                                    //Log.Message("launcher != null");
+                                    if (launcher.Faction.IsPlayer)
                                     {
-                                        //Log.Message("launcher != null");
-                                        if (launcher.Faction.IsPlayer)
-                                        {
-                                            wantToIntercept = false;
-                                        }
-                                        else
-                                        {
+                                        wantToIntercept = false;
+                                    }
+                                    else
+                                    {
 
-                                        }
                                     }
                                 }
                             }
@@ -188,9 +209,9 @@ namespace ED_Shields_CR
                             {
 
                                 //On hit effects
-                                MoteThrower.ThrowLightningGlow(pr.ExactPosition, 0.5f);
+                                MoteMaker.ThrowLightningGlow(pr.ExactPosition, this.Map, 0.5f);
                                 //On hit sound
-                                HitSoundDef.PlayOneShot(pr.Position);
+                                HitSoundDef.PlayOneShot((SoundInfo)new TargetInfo(this.Position, this.Map, false));
 
                                 //Damage the shield
                                 ProcessDamage(pr.def.projectile.damageAmountBase);
@@ -205,8 +226,6 @@ namespace ED_Shields_CR
 
                     }
                 }
-
-
             }
             foreach (Thing currentThing in thingsToDestroy)
             {
@@ -214,7 +233,6 @@ namespace ED_Shields_CR
             }
 
         }
-
 
         /// <summary>
         /// Checks if the projectile will land within the shield or pass over.
