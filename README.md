@@ -14,3 +14,6 @@ Updating to:
   * Rimworld A16
   * CombatRealism-1.6.9.4
   * ED-ShieldsBasic 03.00.00
+  
+02.00.01
+  * Converting WorkToMake to WorkToBuild
