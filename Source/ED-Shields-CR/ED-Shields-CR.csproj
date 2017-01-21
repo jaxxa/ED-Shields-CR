@@ -36,11 +36,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="CombatRealism">
-      <HintPath>..\..\..\..\lib\CR\1.6.9.4\CombatRealism.dll</HintPath>
+      <HintPath>..\..\..\..\lib\A16\CombatRealism-1.6.9.4\CombatRealism.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ED-ShieldsBasic">
-      <HintPath>..\..\..\..\lib\ED\ShieldsBasic_03.00.00\ED-ShieldsBasic.dll</HintPath>
+      <HintPath>..\..\..\..\lib\A16\ED-ShieldsBasic_03.00.01\ED-ShieldsBasic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
