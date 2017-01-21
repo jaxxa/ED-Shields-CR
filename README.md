@@ -1,6 +1,6 @@
 # ED-Shields-CR
 
-	Requires: ED-Shields, Community Core Library, CombatRealism
+	Requires: ED-ShieldsBasic, CombatRealism
 	
 Modifies the Shields from ED-Shields to intercept the projectiles fired by weapons from Combat Realism.
 
